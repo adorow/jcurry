@@ -1,9 +1,31 @@
+/*
+   Copyright 2016 Anderson Dorow
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+ */
 package jcurry;
 
 import jcurry.function.*;
 
 import java.util.function.*;
 
+/**
+ * The entrypoint for decorating {@code java.util.function.*} interfaces into ramped-up types with the ability to curry.
+ * <br/>
+ *
+ *
+ * @link https://en.wikipedia.org/wiki/Currying
+ */
 public final class Curry {
 
     private Curry() {}
@@ -19,6 +41,7 @@ public final class Curry {
     public static <T> CurryingBinaryOperator<T> as(BinaryOperator<T> operator) {
         return (t, t2) -> operator.apply(t, t2);
     }
+
     public static <T, U> CurryingBiPredicate<T, U> as(BiPredicate<T, U> predicate) {
         return (t, u) -> predicate.test(t, u);
     }
