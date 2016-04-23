@@ -18,4 +18,14 @@ package jcurry.function;
 import java.util.function.BinaryOperator;
 
 public interface CurryingBinaryOperator<T> extends BinaryOperator<T> {
+
+    default CurryingUnaryOperator<T> curry(T t) {
+        return (t2) -> this.apply(t, t2);
+    }
+
+    default CurryingBinaryOperator<T> flip() {
+        return (t2, t) -> this.apply(t, t2);
+    }
+
+
 }

@@ -19,4 +19,12 @@ import java.util.function.DoubleBinaryOperator;
 
 public interface CurryingDoubleBinaryOperator extends DoubleBinaryOperator {
 
+    default CurryingDoubleUnaryOperator curry(double d) {
+        return (d2) -> this.applyAsDouble(d, d2);
+    }
+
+    default CurryingDoubleBinaryOperator flip() {
+        return (d2, d) -> this.applyAsDouble(d, d2);
+    }
+
 }

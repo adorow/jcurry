@@ -15,8 +15,19 @@
  */
 package jcurry.function;
 
+import java.util.Objects;
+import java.util.function.BiFunction;
 import java.util.function.DoubleFunction;
 
 public interface CurryingDoubleFunction<R> extends DoubleFunction<R> {
+
+    default CurryingSupplier curry(double d) {
+        return () -> this.apply(d);
+    }
+
+    default <V, U> CurryingBiFunction<V, U, R> compose(BiFunction<? super V, ? super U, Double> before) {
+        Objects.requireNonNull(before);
+        return (v, u) -> this.apply(before.apply(v, u));
+    }
 
 }

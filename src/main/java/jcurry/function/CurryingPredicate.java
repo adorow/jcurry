@@ -19,4 +19,8 @@ import java.util.function.Predicate;
 
 public interface CurryingPredicate<T> extends Predicate<T> {
 
+    default CurryingBooleanSupplier curry(T t) {
+        return () -> this.test(t);
+    }
+
 }

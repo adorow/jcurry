@@ -19,4 +19,12 @@ import java.util.function.BiConsumer;
 
 public interface CurryingBiConsumer<T, U> extends BiConsumer<T, U> {
 
+    default CurryingConsumer<U> curry(T t) {
+        return (u) -> this.accept(t, u);
+    }
+
+    default CurryingBiConsumer<U, T> flip() {
+        return (u, t) -> this.accept(t, u);
+    }
+
 }

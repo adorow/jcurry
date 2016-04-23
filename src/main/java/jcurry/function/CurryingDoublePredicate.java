@@ -19,4 +19,8 @@ import java.util.function.DoublePredicate;
 
 public interface CurryingDoublePredicate extends DoublePredicate {
 
+    default CurryingBooleanSupplier curry(double d) {
+        return () -> this.test(d);
+    }
+
 }

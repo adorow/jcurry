@@ -18,4 +18,13 @@ package jcurry.function;
 import java.util.function.BiPredicate;
 
 public interface CurryingBiPredicate<T, U> extends BiPredicate<T, U> {
+
+    default CurryingPredicate<U> curry(T t) {
+        return (u) -> this.test(t, u);
+    }
+
+    default CurryingBiPredicate<U, T> flip() {
+        return (u, t) -> this.test(t, u);
+    }
+
 }

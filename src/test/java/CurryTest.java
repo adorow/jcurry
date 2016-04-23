@@ -19,6 +19,7 @@ public class CurryTest {
 
         CurryingIntUnaryOperator upperBoundary10 = Curry.intBinaryOperator(Math::max).curry(10);
 
+
         System.out.println(upperBoundary10.applyAsInt(5));
         System.out.println(upperBoundary10.applyAsInt(22));
         System.out.println(upperBoundary10.applyAsInt(-5));
