@@ -16,7 +16,12 @@
 package jcurry.function;
 
 import java.util.function.IntBinaryOperator;
+import java.util.function.IntSupplier;
 
 public interface CurryingIntBinaryOperator extends IntBinaryOperator {
+
+    default CurryingIntUnaryOperator curry(int i) {
+        return (i2) -> this.applyAsInt(i, i2);
+    }
 
 }

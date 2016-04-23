@@ -22,7 +22,12 @@ import java.util.function.*;
 /**
  * The entrypoint for decorating {@code java.util.function.*} interfaces into ramped-up types with the ability to curry.
  * <br/>
- *
+ * Currying means that you can partially apply parameters to functions. Passing for example one parameter to a two parameter function, effectively turning it into a one parameter function.
+ * <br/>
+ * Example:
+ * <code>
+ *     CurryingIntUnaryOperator upperBoundary10 = Curry.intBinaryOperator(Math::max).curry(10)
+ * </code>
  *
  * @link https://en.wikipedia.org/wiki/Currying
  */
@@ -30,175 +35,175 @@ public final class Curry {
 
     private Curry() {}
 
-    public static <T, U> CurryingBiConsumer<T, U> as(BiConsumer<T, U> consumer) {
+    public static <T, U> CurryingBiConsumer<T, U> biConsumer(BiConsumer<T, U> consumer) {
         return (t, u) -> consumer.accept(t, u);
     }
 
-    public static <T, U, R> CurryingBiFunction<T, U, R> as(BiFunction<T, U, R> function) {
+    public static <T, U, R> CurryingBiFunction<T, U, R> biFunction(BiFunction<T, U, R> function) {
         return (t, u) -> function.apply(t, u);
     }
 
-    public static <T> CurryingBinaryOperator<T> as(BinaryOperator<T> operator) {
+    public static <T> CurryingBinaryOperator<T> binaryOperator(BinaryOperator<T> operator) {
         return (t, t2) -> operator.apply(t, t2);
     }
 
-    public static <T, U> CurryingBiPredicate<T, U> as(BiPredicate<T, U> predicate) {
+    public static <T, U> CurryingBiPredicate<T, U> biPredicate(BiPredicate<T, U> predicate) {
         return (t, u) -> predicate.test(t, u);
     }
 
-    public static CurryingBooleanSupplier as(BooleanSupplier supplier) {
+    public static CurryingBooleanSupplier booleanSupplier(BooleanSupplier supplier) {
         return () -> supplier.getAsBoolean();
     }
 
-    public static <T> CurryingConsumer<T> as(Consumer<T> consumer) {
+    public static <T> CurryingConsumer<T> consumer(Consumer<T> consumer) {
         return (t) -> consumer.accept(t);
     }
 
-    public static CurryingDoubleBinaryOperator as(DoubleBinaryOperator operator) {
+    public static CurryingDoubleBinaryOperator doubleBinaryOperator(DoubleBinaryOperator operator) {
         return (l, r) -> operator.applyAsDouble(l, r);
     }
 
-    public static CurryingDoubleConsumer as(DoubleConsumer consumer) {
+    public static CurryingDoubleConsumer doubleConsumer(DoubleConsumer consumer) {
         return (d) -> consumer.accept(d);
     }
 
-    public static <R> CurryingDoubleFunction<R> as(DoubleFunction<R> function) {
+    public static <R> CurryingDoubleFunction<R> doubleFunction(DoubleFunction<R> function) {
         return (d) -> function.apply(d);
     }
 
-    public static CurryingDoublePredicate as(DoublePredicate predicate) {
+    public static CurryingDoublePredicate doublePredicate(DoublePredicate predicate) {
         return (d) -> predicate.test(d);
     }
 
-    public static CurryingDoubleSupplier as(DoubleSupplier supplier) {
+    public static CurryingDoubleSupplier doubleSupplier(DoubleSupplier supplier) {
         return () -> supplier.getAsDouble();
     }
 
-    public static CurryingDoubleToIntFunction as(DoubleToIntFunction function) {
+    public static CurryingDoubleToIntFunction doubleToIntFunction(DoubleToIntFunction function) {
         return (d) -> function.applyAsInt(d);
     }
 
-    public static CurryingDoubleToLongFunction as(DoubleToLongFunction function) {
+    public static CurryingDoubleToLongFunction doubleToLongFunction(DoubleToLongFunction function) {
         return (d) -> function.applyAsLong(d);
     }
 
-    public static CurryingDoubleUnaryOperator as(DoubleUnaryOperator operator) {
+    public static CurryingDoubleUnaryOperator doubleUnaryOperator(DoubleUnaryOperator operator) {
         return (d) -> operator.applyAsDouble(d);
     }
 
-    public static <T, R> CurryingFunction<T, R> as(Function<T, R> function) {
+    public static <T, R> CurryingFunction<T, R> function(Function<T, R> function) {
         return (t) -> function.apply(t);
     }
 
-    public static CurryingIntBinaryOperator as(IntBinaryOperator operator) {
+    public static CurryingIntBinaryOperator intBinaryOperator(IntBinaryOperator operator) {
         return (l, r) -> operator.applyAsInt(l, r);
     }
 
-    public static CurryingIntConsumer as(IntConsumer consumer) {
+    public static CurryingIntConsumer intConsumer(IntConsumer consumer) {
         return (i) -> consumer.accept(i);
     }
 
-    public static <R> CurryingIntFunction<R> as(IntFunction<R> function) {
+    public static <R> CurryingIntFunction<R> intFunction(IntFunction<R> function) {
         return (t) -> function.apply(t);
     }
 
-    public static CurryingIntPredicate as(IntPredicate predicate) {
+    public static CurryingIntPredicate intPredicate(IntPredicate predicate) {
         return (i) -> predicate.test(i);
     }
 
-    public static CurryingIntSupplier as(IntSupplier supplier) {
+    public static CurryingIntSupplier intSupplier(IntSupplier supplier) {
         return () -> supplier.getAsInt();
     }
 
-    public static CurryingIntToDoubleFunction as(IntToDoubleFunction function) {
+    public static CurryingIntToDoubleFunction intToDoubleFunction(IntToDoubleFunction function) {
         return (i) -> function.applyAsDouble(i);
     }
 
-    public static CurryingIntToLongFunction as(IntToLongFunction function) {
+    public static CurryingIntToLongFunction intToLongFunction(IntToLongFunction function) {
         return (i) -> function.applyAsLong(i);
     }
 
-    public static CurryingIntUnaryOperator as(IntUnaryOperator operator) {
+    public static CurryingIntUnaryOperator intUnaryOperator(IntUnaryOperator operator) {
         return (i) -> operator.applyAsInt(i);
     }
 
-    public static CurryingLongBinaryOperator as(LongBinaryOperator operator) {
+    public static CurryingLongBinaryOperator longBinaryOperator(LongBinaryOperator operator) {
         return (l, r) -> operator.applyAsLong(l, r);
     }
 
-    public static CurryingLongConsumer as(LongConsumer consumer) {
+    public static CurryingLongConsumer longConsumer(LongConsumer consumer) {
         return (d) -> consumer.accept(d);
     }
 
-    public static <R> CurryingLongFunction<R> as(LongFunction<R> function) {
+    public static <R> CurryingLongFunction<R> longFunction(LongFunction<R> function) {
         return (d) -> function.apply(d);
     }
 
-    public static CurryingLongPredicate as(LongPredicate predicate) {
+    public static CurryingLongPredicate longPredicate(LongPredicate predicate) {
         return (d) -> predicate.test(d);
     }
 
-    public static CurryingLongSupplier as(LongSupplier supplier) {
+    public static CurryingLongSupplier longSupplier(LongSupplier supplier) {
         return () -> supplier.getAsLong();
     }
 
-    public static CurryingLongToDoubleFunction as(LongToDoubleFunction function) {
+    public static CurryingLongToDoubleFunction longToDoubleFunction(LongToDoubleFunction function) {
         return (i) -> function.applyAsDouble(i);
     }
 
-    public static CurryingLongToIntFunction as(LongToIntFunction function) {
+    public static CurryingLongToIntFunction longToIntFunction(LongToIntFunction function) {
         return (i) -> function.applyAsInt(i);
     }
 
-    public static CurryingLongUnaryOperator as(LongUnaryOperator operator) {
+    public static CurryingLongUnaryOperator longUnaryOperator(LongUnaryOperator operator) {
         return (l) -> operator.applyAsLong(l);
     }
 
-    public static <T> CurryingObjDoubleConsumer<T> as(ObjDoubleConsumer consumer) {
+    public static <T> CurryingObjDoubleConsumer<T> objDoubleConsumer(ObjDoubleConsumer consumer) {
         return (t, d) -> consumer.accept(t, d);
     }
 
-    public static <T> CurryingObjIntConsumer<T> as(ObjIntConsumer consumer) {
+    public static <T> CurryingObjIntConsumer<T> objIntConsumer(ObjIntConsumer consumer) {
         return (t, i) -> consumer.accept(t, i);
     }
 
-    public static <T> CurryingObjLongConsumer<T> as(ObjLongConsumer consumer) {
+    public static <T> CurryingObjLongConsumer<T> objLongConsumer(ObjLongConsumer consumer) {
         return (t, l) -> consumer.accept(t, l);
     }
 
-    public static <T> CurryingPredicate<T> as(Predicate<T> predicate) {
+    public static <T> CurryingPredicate<T> predicate(Predicate<T> predicate) {
         return (t) -> predicate.test(t);
     }
 
-    public static <T> CurryingSupplier<T> as(Supplier<T> supplier) {
+    public static <T> CurryingSupplier<T> supplier(Supplier<T> supplier) {
         return () -> supplier.get();
     }
 
-    public static <T, U> CurryingToDoubleBiFunction<T, U> as(ToDoubleBiFunction<T, U> function) {
+    public static <T, U> CurryingToDoubleBiFunction<T, U> toDoubleBiFunction(ToDoubleBiFunction<T, U> function) {
         return (t, u) -> function.applyAsDouble(t, u);
     }
 
-    public static <T> CurryingToDoubleFunction<T> as(ToDoubleFunction<T> function) {
+    public static <T> CurryingToDoubleFunction<T> toDoubleFunction(ToDoubleFunction<T> function) {
         return (t) -> function.applyAsDouble(t);
     }
 
-    public static <T, U> CurryingToIntBiFunction<T, U> as(ToIntBiFunction<T, U> function) {
+    public static <T, U> CurryingToIntBiFunction<T, U> toIntBiFunction(ToIntBiFunction<T, U> function) {
         return (t, u) -> function.applyAsInt(t, u);
     }
 
-    public static <T> CurryingToIntFunction<T> as(ToIntFunction<T> function) {
+    public static <T> CurryingToIntFunction<T> toIntFunction(ToIntFunction<T> function) {
         return (t) -> function.applyAsInt(t);
     }
 
-    public static <T, U> CurryingToLongBiFunction<T, U> as(ToLongBiFunction<T, U> function) {
+    public static <T, U> CurryingToLongBiFunction<T, U> toLongBiFunction(ToLongBiFunction<T, U> function) {
         return (t, u) -> function.applyAsLong(t, u);
     }
 
-    public static <T> CurryingToLongFunction<T> as(ToLongFunction<T> function) {
+    public static <T> CurryingToLongFunction<T> toLongFunction(ToLongFunction<T> function) {
         return (t) -> function.applyAsLong(t);
     }
 
-    public static <T> CurryingUnaryOperator<T> as(UnaryOperator<T> operator) {
+    public static <T> CurryingUnaryOperator<T> unaryOperator(UnaryOperator<T> operator) {
         return (t) -> operator.apply(t);
     }
 

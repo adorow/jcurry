@@ -1,4 +1,5 @@
 import jcurry.Curry;
+import jcurry.function.CurryingIntUnaryOperator;
 
 import java.util.function.BiFunction;
 
@@ -16,7 +17,15 @@ public class CurryTest {
 //        curry(new Something()::str1, 1);
         //curry((Integer a, Integer b) -> a + b, 1);
 
-        System.out.print(Curry.as(new Something()::str1).apply(4));
+        CurryingIntUnaryOperator upperBoundary10 = Curry.intBinaryOperator(Math::max).curry(10);
+
+        System.out.println(upperBoundary10.applyAsInt(5));
+        System.out.println(upperBoundary10.applyAsInt(22));
+        System.out.println(upperBoundary10.applyAsInt(-5));
+    }
+
+    private static int max(int a, int b) {
+        return Math.max(a, b);
     }
 
     private static BiFunction<Integer, Integer, Integer> add() {

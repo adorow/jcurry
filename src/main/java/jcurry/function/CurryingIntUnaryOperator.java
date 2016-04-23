@@ -15,8 +15,13 @@
  */
 package jcurry.function;
 
+import java.util.function.IntSupplier;
 import java.util.function.IntUnaryOperator;
 
 public interface CurryingIntUnaryOperator extends IntUnaryOperator {
+
+    default CurryingIntSupplier curry(int i) {
+        return () -> this.applyAsInt(i);
+    }
 
 }
