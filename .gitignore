@@ -3,6 +3,9 @@ target
 .gradle
 build
 .idea
+jcurry.iml
+jcurry.ipr
+jcurry.iws
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
