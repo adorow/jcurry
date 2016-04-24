@@ -26,14 +26,14 @@ import java.util.function.*;
  * <br/>
  * Example:
  * <code>
- *     CurryingIntUnaryOperator upperBoundary10 = Curry.intBinaryOperator(Math::max).curry(10)
+ *     CurryingIntUnaryOperator upperBoundary10 = Currying.intBinaryOperator(Math::max).curry(10)
  * </code>
  *
  * @link https://en.wikipedia.org/wiki/Currying
  */
-public final class Curry {
+public final class Currying {
 
-    private Curry() {}
+    private Currying() {}
 
     public static <T, U> CurryingBiConsumer<T, U> biConsumer(BiConsumer<T, U> consumer) {
         return (t, u) -> consumer.accept(t, u);
