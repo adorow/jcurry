@@ -19,4 +19,13 @@ import java.util.function.ObjDoubleConsumer;
 
 public interface CurryingObjDoubleConsumer<T> extends ObjDoubleConsumer<T> {
 
+    default CurryingDoubleConsumer curry(T t) {
+        return (u) -> this.accept(t, u);
+    }
+
+    default CurryingBiConsumer<Double, T> flip() {
+        return (u, t) -> this.accept(t, u);
+    }
+
 }
+

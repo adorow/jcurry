@@ -19,4 +19,17 @@ import java.util.function.ToIntBiFunction;
 
 public interface CurryingToIntBiFunction<T, U> extends ToIntBiFunction<T, U> {
 
+    default CurryingToIntFunction<U> curry(T t) {
+        return (u) -> this.applyAsInt(t, u);
+    }
+
+    default CurryingIntSupplier curry(T t, U u) {
+        return () -> this.applyAsInt(t, u);
+    }
+
+    default CurryingToIntBiFunction<U, T> flip() {
+        return (u, t) -> this.applyAsInt(t, u);
+    }
+
+
 }

@@ -19,4 +19,16 @@ import java.util.function.ToDoubleBiFunction;
 
 public interface CurryingToDoubleBiFunction<T, U> extends ToDoubleBiFunction<T, U> {
 
+    default CurryingToDoubleFunction<U> curry(T t) {
+        return (u) -> this.applyAsDouble(t, u);
+    }
+
+    default CurryingDoubleSupplier curry(T t, U u) {
+        return () -> this.applyAsDouble(t, u);
+    }
+
+    default CurryingToDoubleBiFunction<U, T> flip() {
+        return (u, t) -> this.applyAsDouble(t, u);
+    }
+
 }

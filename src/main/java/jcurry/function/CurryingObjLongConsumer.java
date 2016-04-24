@@ -19,4 +19,12 @@ import java.util.function.ObjLongConsumer;
 
 public interface CurryingObjLongConsumer<T> extends ObjLongConsumer<T> {
 
+    default CurryingLongConsumer curry(T t) {
+        return (u) -> this.accept(t, u);
+    }
+
+    default CurryingBiConsumer<Long, T> flip() {
+        return (u, t) -> this.accept(t, u);
+    }
+
 }

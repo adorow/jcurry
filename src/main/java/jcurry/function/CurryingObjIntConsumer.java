@@ -19,4 +19,12 @@ import java.util.function.ObjIntConsumer;
 
 public interface CurryingObjIntConsumer<T> extends ObjIntConsumer<T> {
 
+    default CurryingIntConsumer curry(T t) {
+        return (u) -> this.accept(t, u);
+    }
+
+    default CurryingBiConsumer<Integer, T> flip() {
+        return (u, t) -> this.accept(t, u);
+    }
+
 }

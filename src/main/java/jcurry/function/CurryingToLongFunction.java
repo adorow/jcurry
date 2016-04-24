@@ -15,8 +15,19 @@
  */
 package jcurry.function;
 
+import java.util.Objects;
+import java.util.function.BiFunction;
 import java.util.function.ToLongFunction;
 
 public interface CurryingToLongFunction<T> extends ToLongFunction<T> {
+
+    default CurryingLongSupplier curry(T t) {
+        return () -> this.applyAsLong(t);
+    }
+
+    default <V, U> CurryingToLongBiFunction<V, U> compose(BiFunction<? super V, ? super U, ? extends T> before) {
+        Objects.requireNonNull(before);
+        return (v, u) -> this.applyAsLong(before.apply(v, u));
+    }
 
 }

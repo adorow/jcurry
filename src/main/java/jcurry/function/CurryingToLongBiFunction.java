@@ -19,4 +19,16 @@ import java.util.function.ToLongBiFunction;
 
 public interface CurryingToLongBiFunction<T, U> extends ToLongBiFunction<T, U> {
 
+    default CurryingToLongFunction<U> curry(T t) {
+        return (u) -> this.applyAsLong(t, u);
+    }
+
+    default CurryingLongSupplier curry(T t, U u) {
+        return () -> this.applyAsLong(t, u);
+    }
+
+    default CurryingToLongBiFunction<U, T> flip() {
+        return (u, t) -> this.applyAsLong(t, u);
+    }
+
 }
