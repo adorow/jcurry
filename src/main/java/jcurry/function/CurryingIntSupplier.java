@@ -16,12 +16,12 @@
 package jcurry.function;
 
 import java.util.function.BiFunction;
-import java.util.function.DoubleFunction;
+import java.util.function.IntFunction;
 import java.util.function.IntSupplier;
 
 public interface CurryingIntSupplier extends IntSupplier {
 
-    default <R> CurryingSupplier<R> andThen(DoubleFunction<? extends R> after) {
+    default <R> CurryingSupplier<R> andThen(IntFunction<? extends R> after) {
         return () -> after.apply(this.getAsInt());
     }
 

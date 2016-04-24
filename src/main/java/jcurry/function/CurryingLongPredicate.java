@@ -19,4 +19,8 @@ import java.util.function.LongPredicate;
 
 public interface CurryingLongPredicate extends LongPredicate {
 
+    default CurryingBooleanSupplier curry(long l) {
+        return () -> this.test(l);
+    }
+
 }

@@ -19,4 +19,16 @@ import java.util.function.LongBinaryOperator;
 
 public interface CurryingLongBinaryOperator extends LongBinaryOperator {
 
+    default CurryingLongUnaryOperator curry(long l) {
+        return (l2) -> this.applyAsLong(l, l2);
+    }
+
+    default CurryingLongSupplier curry(long l, long l2) {
+        return () -> this.applyAsLong(l, l2);
+    }
+
+    default CurryingLongBinaryOperator flip() {
+        return (l2, l) -> this.applyAsLong(l, l2);
+    }
+
 }

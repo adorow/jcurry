@@ -15,13 +15,19 @@
  */
 package jcurry.function;
 
-import java.util.function.IntSupplier;
+import java.util.Objects;
 import java.util.function.IntUnaryOperator;
+import java.util.function.ToIntBiFunction;
 
 public interface CurryingIntUnaryOperator extends IntUnaryOperator {
 
     default CurryingIntSupplier curry(int i) {
         return () -> this.applyAsInt(i);
+    }
+
+    default <V, U> CurryingToIntBiFunction<V, U> compose(ToIntBiFunction<? super V, ? super U> before) {
+        Objects.requireNonNull(before);
+        return (v, u) -> this.applyAsInt(before.applyAsInt(v, u));
     }
 
 }

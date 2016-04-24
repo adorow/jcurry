@@ -15,8 +15,18 @@
  */
 package jcurry.function;
 
+import java.util.function.BiFunction;
+import java.util.function.LongFunction;
 import java.util.function.LongSupplier;
 
 public interface CurryingLongSupplier extends LongSupplier {
+
+    default <R> CurryingSupplier<R> andThen(LongFunction<? extends R> after) {
+        return () -> after.apply(this.getAsLong());
+    }
+
+    default <U, R> CurryingFunction<U, R> andThenComposeInto(BiFunction<Long, ? super U, ? extends R> after) {
+        return (u) -> after.apply(this.getAsLong(), u);
+    }
 
 }

@@ -15,8 +15,19 @@
  */
 package jcurry.function;
 
+import java.util.Objects;
 import java.util.function.LongUnaryOperator;
+import java.util.function.ToLongBiFunction;
 
 public interface CurryingLongUnaryOperator extends LongUnaryOperator {
+
+    default CurryingLongSupplier curry(long l) {
+        return () -> this.applyAsLong(l);
+    }
+
+    default <V, U> CurryingToLongBiFunction<V, U> compose(ToLongBiFunction<? super V, ? super U> before) {
+        Objects.requireNonNull(before);
+        return (v, u) -> this.applyAsLong(before.applyAsLong(v, u));
+    }
 
 }
