@@ -19,4 +19,8 @@ import java.util.function.IntPredicate;
 
 public interface CurryingIntPredicate extends IntPredicate {
 
+    default CurryingBooleanSupplier curry(int i) {
+        return () -> this.test(i);
+    }
+
 }

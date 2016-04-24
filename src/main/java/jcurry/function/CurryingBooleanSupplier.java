@@ -15,7 +15,18 @@
  */
 package jcurry.function;
 
+import java.util.function.BiFunction;
 import java.util.function.BooleanSupplier;
+import java.util.function.Function;
 
 public interface CurryingBooleanSupplier extends BooleanSupplier {
+
+    default <R> CurryingSupplier<R> andThen(Function<Boolean, R> after) {
+        return () -> after.apply(this.getAsBoolean());
+    }
+
+    default <U, R> CurryingFunction<U, R> andThenComposeInto(BiFunction<Boolean, ? super U, ? extends R> after) {
+        return (u) -> after.apply(this.getAsBoolean(), u);
+    }
+
 }

@@ -23,6 +23,10 @@ public interface CurryingDoubleBinaryOperator extends DoubleBinaryOperator {
         return (d2) -> this.applyAsDouble(d, d2);
     }
 
+    default CurryingDoubleSupplier curry(double d, double d2) {
+        return () -> this.applyAsDouble(d, d2);
+    }
+
     default CurryingDoubleBinaryOperator flip() {
         return (d2, d) -> this.applyAsDouble(d, d2);
     }

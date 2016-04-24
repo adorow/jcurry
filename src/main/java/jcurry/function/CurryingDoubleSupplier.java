@@ -15,8 +15,18 @@
  */
 package jcurry.function;
 
+import java.util.function.BiFunction;
+import java.util.function.DoubleFunction;
 import java.util.function.DoubleSupplier;
 
 public interface CurryingDoubleSupplier extends DoubleSupplier {
+
+    default <R> CurryingSupplier<R> andThen(DoubleFunction<? extends R> after) {
+        return () -> after.apply(this.getAsDouble());
+    }
+
+    default <U, R> CurryingFunction<U, R> andThenComposeInto(BiFunction<Double, ? super U, ? extends R> after) {
+        return (u) -> after.apply(this.getAsDouble(), u);
+    }
 
 }

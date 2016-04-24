@@ -15,8 +15,19 @@
  */
 package jcurry.function;
 
+import java.util.Objects;
 import java.util.function.DoubleUnaryOperator;
+import java.util.function.ToDoubleBiFunction;
 
 public interface CurryingDoubleUnaryOperator extends DoubleUnaryOperator {
+
+    default CurryingDoubleSupplier curry(double d) {
+        return () -> this.applyAsDouble(d);
+    }
+
+    default <V, U> CurryingToDoubleBiFunction<V, U> compose(ToDoubleBiFunction<? super V, ? super U> before) {
+        Objects.requireNonNull(before);
+        return (v, u) -> this.applyAsDouble(before.applyAsDouble(v, u));
+    }
 
 }
