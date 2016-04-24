@@ -1,3 +1,5 @@
+package jcurry.function;
+
 import jcurry.Curry;
 import jcurry.function.CurryingIntUnaryOperator;
 
