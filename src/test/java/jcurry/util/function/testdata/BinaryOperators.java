@@ -1,8 +1,5 @@
-package jcurry.util.function.util;
+package jcurry.util.function.testdata;
 
-/**
- * Test utility class containing sample BinaryOperator functions.
- */
 public final class BinaryOperators {
 
     private BinaryOperators() {}

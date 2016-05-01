@@ -1,7 +1,7 @@
 package jcurry.util.function;
 
 import jcurry.util.Currying;
-import jcurry.util.function.util.BiConsumers;
+import jcurry.util.function.testdata.BiConsumers;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;

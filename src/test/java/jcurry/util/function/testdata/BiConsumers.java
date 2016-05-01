@@ -1,11 +1,8 @@
-package jcurry.util.function.util;
+package jcurry.util.function.testdata;
 
 import java.util.List;
 import java.util.function.BiConsumer;
 
-/**
- * Test utility class containing sample BiConsumer functions.
- */
 public final class BiConsumers {
 
     private BiConsumers() {}

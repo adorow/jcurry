@@ -1,8 +1,5 @@
-package jcurry.util.function.util;
+package jcurry.util.function.testdata;
 
-/**
- * Test utility class containing sample BiFunction functions.
- */
 public final class BiFunctions {
 
     private BiFunctions() {}
