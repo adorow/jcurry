@@ -1,5 +1,7 @@
 package jcurry.util.function.testdata;
 
+import java.time.LocalDate;
+
 public final class BiFunctions {
 
     private BiFunctions() {}
@@ -9,4 +11,11 @@ public final class BiFunctions {
         return a + b;
     }
 
+    public static String concatenateBooleanAndStr(Boolean a, String b) {
+        return a + b;
+    }
+
+    public static LocalDate addDays(LocalDate date, Integer numberOfDays) {
+        return date.plusDays(numberOfDays);
+    }
 }

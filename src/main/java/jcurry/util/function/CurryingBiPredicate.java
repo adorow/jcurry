@@ -23,6 +23,10 @@ public interface CurryingBiPredicate<T, U> extends BiPredicate<T, U> {
         return (u) -> this.test(t, u);
     }
 
+    default CurryingBooleanSupplier curry(T t, U u) {
+        return () -> this.test(t, u);
+    }
+
     default CurryingBiPredicate<U, T> flip() {
         return (u, t) -> this.test(t, u);
     }

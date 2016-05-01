@@ -29,4 +29,8 @@ public interface CurryingBooleanSupplier extends BooleanSupplier {
         return (u) -> after.apply(this.getAsBoolean(), u);
     }
 
+    default CurryingBooleanSupplier negate() {
+        return () -> !this.getAsBoolean();
+    }
+
 }
