@@ -18,4 +18,16 @@ public final class BiFunctions {
     public static LocalDate addDays(LocalDate date, Integer numberOfDays) {
         return date.plusDays(numberOfDays);
     }
+
+    public static Double divide(Double a, Double b) {
+        return a / b;
+    }
+
+    public static Integer divide(Integer a, Integer b) {
+        return a / b;
+    }
+
+    public static Long divide(Long a, Long b) {
+        return a / b;
+    }
 }
