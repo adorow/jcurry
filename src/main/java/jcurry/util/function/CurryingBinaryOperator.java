@@ -23,6 +23,10 @@ public interface CurryingBinaryOperator<T> extends BinaryOperator<T> {
         return (t2) -> this.apply(t, t2);
     }
 
+    default CurryingSupplier<T> curry(T t, T t2) {
+        return () -> this.apply(t, t2);
+    }
+
     default CurryingBinaryOperator<T> flip() {
         return (t2, t) -> this.apply(t, t2);
     }

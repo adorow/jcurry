@@ -6,7 +6,7 @@ import java.util.function.BiConsumer;
 /**
  * Test utility class containing sample BiConsumer functions.
  */
-public class BiConsumers {
+public final class BiConsumers {
 
     private BiConsumers() {}
 

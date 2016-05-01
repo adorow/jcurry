@@ -3,7 +3,7 @@ package jcurry.util.function.util;
 /**
  * Test utility class containing sample BiFunction functions.
  */
-public class BiFunctions {
+public final class BiFunctions {
 
     private BiFunctions() {}
 
