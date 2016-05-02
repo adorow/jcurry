@@ -10,7 +10,7 @@ public final class Consumers {
 
     // consumes a string, and adds it to the accumulator
     public static <T> Consumer<T> consumerAddsToAccumulatorList(List<Object> accumulator) {
-        return (t1) -> { accumulator.add(t1); };
+        return (t1) -> accumulator.add(t1);
     }
 
 }
