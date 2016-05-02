@@ -1,6 +1,13 @@
 apply plugin: 'java'
 apply plugin: 'idea'
 
+apply plugin: 'maven'
+apply plugin: 'signing'
+
+group = 'com.github.adorow'
+archivesBaseName = 'jcurry'
+version = '1.0.1'
+
 repositories {
     mavenCentral()
 }
@@ -12,4 +19,68 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     testCompile group: 'org.hamcrest', name: 'hamcrest-core', version: '1.3'
     testCompile group: 'org.hamcrest', name: 'hamcrest-library', version: '1.3'
+}
+
+task javadocJar(type: Jar) {
+    classifier = 'javadoc'
+    from javadoc
+}
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+artifacts {
+    archives javadocJar, sourcesJar
+}
+
+signing {
+    sign configurations.archives
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+            repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+                authentication(userName: ossrhUsername, password: ossrhPassword)
+            }
+
+            snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+                authentication(userName: ossrhUsername, password: ossrhPassword)
+            }
+
+            pom.project {
+                name 'jcurry'
+                packaging 'jar'
+                
+                description 'jcurry extends the functional interfaces added in Java8, to enable currying, as well as other functional methods.'
+
+                url 'https://github.com/adorow/jcurry'
+
+                scm {
+                    connection 'https://github.com/adorow/jcurry.git'
+                    developerConnection 'https://github.com/adorow/jcurry.git'
+                    url 'https://github.com/adorow/jcurry'
+                }
+
+                licenses {
+                    license {
+                        name 'The Apache License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id 'adorow'
+                        name 'Anderson Dorow'
+                        email 'andersondorow@gmail.com'
+                    }
+                }
+            }
+        }
+    }
 }
