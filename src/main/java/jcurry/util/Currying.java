@@ -21,15 +21,15 @@ import java.util.function.*;
 
 /**
  * The entrypoint for decorating {@code java.util.function.*} interfaces into ramped-up types with the ability to curry.
- * <br/>
+ *
  * Currying means that you can partially apply parameters to functions. Passing for example one parameter to a two parameter function, effectively turning it into a one parameter function.
- * <br/>
+ *
  * Example:
  * <code>
  *     CurryingIntUnaryOperator upperBoundary10 = Currying.intBinaryOperator(Math::max).curry(10)
  * </code>
  *
- * @link https://en.wikipedia.org/wiki/Currying
+ * @see <a href="https://en.wikipedia.org/wiki/Currying">Currying</a>
  */
 public final class Currying {
 
