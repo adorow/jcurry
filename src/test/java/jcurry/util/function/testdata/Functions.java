@@ -25,4 +25,8 @@ public final class Functions {
     public static Long addsOne(Long v) {
         return v + 1;
     }
+
+    public static <T> String toString(T t) {
+        return String.valueOf(t);
+    }
 }

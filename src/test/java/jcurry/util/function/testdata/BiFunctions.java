@@ -30,4 +30,13 @@ public final class BiFunctions {
     public static Long divide(Long a, Long b) {
         return a / b;
     }
+
+    public static int add(Integer a, Integer b) {
+        return a + b;
+    }
+
+    public static String concatStrings(String a, String b) {
+        return a + b;
+    }
+
 }

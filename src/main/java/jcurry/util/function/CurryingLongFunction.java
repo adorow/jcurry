@@ -17,12 +17,19 @@ package jcurry.util.function;
 
 import java.util.Objects;
 import java.util.function.LongFunction;
+import java.util.function.ToIntFunction;
 import java.util.function.ToLongBiFunction;
+import java.util.function.ToLongFunction;
 
 public interface CurryingLongFunction<R> extends LongFunction<R> {
 
     default CurryingSupplier<R> curry(long l) {
         return () -> this.apply(l);
+    }
+
+    default <V> CurryingFunction<V, R> compose(ToLongFunction<? super V> before) {
+        Objects.requireNonNull(before);
+        return (v) -> this.apply(before.applyAsLong(v));
     }
 
     default <V, U> CurryingBiFunction<V, U, R> compose(ToLongBiFunction<? super V, ? super U> before) {
