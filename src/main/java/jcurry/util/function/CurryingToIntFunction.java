@@ -17,12 +17,18 @@ package jcurry.util.function;
 
 import java.util.Objects;
 import java.util.function.BiFunction;
+import java.util.function.Function;
 import java.util.function.ToIntFunction;
 
 public interface CurryingToIntFunction<T> extends ToIntFunction<T> {
 
     default CurryingIntSupplier curry(T t) {
         return () -> this.applyAsInt(t);
+    }
+
+    default <V> CurryingToIntFunction<V> compose(Function<? super V, ? extends T> before) {
+        Objects.requireNonNull(before);
+        return (v) -> this.applyAsInt(before.apply(v));
     }
 
     default <V, U> CurryingToIntBiFunction<V, U> compose(BiFunction<? super V, ? super U, ? extends T> before) {

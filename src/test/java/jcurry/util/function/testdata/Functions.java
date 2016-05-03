@@ -53,4 +53,17 @@ public final class Functions {
     public static double castToDouble(int v) {
         return v;
     }
+
+    public static double dateToDouble(LocalDate date) {
+        return date.toEpochDay();
+    }
+
+    public static long dateToLong(LocalDate date) {
+        return date.toEpochDay();
+    }
+
+    public static int dateToInt(LocalDate date) {
+        return (int) date.toEpochDay();
+    }
+
 }
