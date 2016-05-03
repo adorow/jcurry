@@ -25,7 +25,7 @@ public class CurryingDoubleFunctionTest {
 
     @Test
     public void curry() {
-        final double input = 5;
+        final double input = 5.0;
         final String expectedResult = "5.0";
 
         CurryingDoubleFunction<String> function = Currying.doubleFunction(Double::toString);

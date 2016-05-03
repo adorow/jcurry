@@ -23,7 +23,7 @@ import java.util.function.ToIntFunction;
 
 public interface CurryingDoubleFunction<R> extends DoubleFunction<R> {
 
-    default CurryingSupplier curry(double d) {
+    default CurryingSupplier<R> curry(double d) {
         return () -> this.apply(d);
     }
 

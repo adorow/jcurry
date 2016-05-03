@@ -17,12 +17,19 @@ package jcurry.util.function;
 
 import java.util.Objects;
 import java.util.function.IntToDoubleFunction;
+import java.util.function.ToDoubleFunction;
 import java.util.function.ToIntBiFunction;
+import java.util.function.ToIntFunction;
 
 public interface CurryingIntToDoubleFunction extends IntToDoubleFunction {
 
     default CurryingDoubleSupplier curry(int i) {
         return () -> this.applyAsDouble(i);
+    }
+
+    default <V> CurryingToDoubleFunction<V> compose(ToIntFunction<? super V> before) {
+        Objects.requireNonNull(before);
+        return (v) -> this.applyAsDouble(before.applyAsInt(v));
     }
 
     default <V, U> CurryingToDoubleBiFunction<V, U> compose(ToIntBiFunction<? super V, ? super U> before) {

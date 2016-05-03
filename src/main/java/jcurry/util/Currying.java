@@ -159,15 +159,15 @@ public final class Currying {
         return (l) -> operator.applyAsLong(l);
     }
 
-    public static <T> CurryingObjDoubleConsumer<T> objDoubleConsumer(ObjDoubleConsumer consumer) {
+    public static <T> CurryingObjDoubleConsumer<T> objDoubleConsumer(ObjDoubleConsumer<T> consumer) {
         return (t, d) -> consumer.accept(t, d);
     }
 
-    public static <T> CurryingObjIntConsumer<T> objIntConsumer(ObjIntConsumer consumer) {
+    public static <T> CurryingObjIntConsumer<T> objIntConsumer(ObjIntConsumer<T> consumer) {
         return (t, i) -> consumer.accept(t, i);
     }
 
-    public static <T> CurryingObjLongConsumer<T> objLongConsumer(ObjLongConsumer consumer) {
+    public static <T> CurryingObjLongConsumer<T> objLongConsumer(ObjLongConsumer<T> consumer) {
         return (t, l) -> consumer.accept(t, l);
     }
 

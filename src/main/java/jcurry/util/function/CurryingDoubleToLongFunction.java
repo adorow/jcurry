@@ -18,11 +18,17 @@ package jcurry.util.function;
 import java.util.Objects;
 import java.util.function.DoubleToLongFunction;
 import java.util.function.ToDoubleBiFunction;
+import java.util.function.ToDoubleFunction;
 
 public interface CurryingDoubleToLongFunction extends DoubleToLongFunction {
 
     default CurryingLongSupplier curry(double d) {
         return () -> this.applyAsLong(d);
+    }
+
+    default <V> CurryingToLongFunction<V> compose(ToDoubleFunction<? super V> before) {
+        Objects.requireNonNull(before);
+        return (v) -> this.applyAsLong(before.applyAsDouble(v));
     }
 
     default <V, U> CurryingToLongBiFunction<V, U> compose(ToDoubleBiFunction<? super V, ? super U> before) {

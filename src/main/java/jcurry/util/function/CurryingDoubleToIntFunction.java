@@ -18,11 +18,20 @@ package jcurry.util.function;
 import java.util.Objects;
 import java.util.function.DoubleToIntFunction;
 import java.util.function.ToDoubleBiFunction;
+import java.util.function.ToDoubleFunction;
+import java.util.function.ToLongFunction;
+
+import static javafx.scene.input.KeyCode.R;
 
 public interface CurryingDoubleToIntFunction extends DoubleToIntFunction {
 
     default CurryingIntSupplier curry(double d) {
         return () -> this.applyAsInt(d);
+    }
+
+    default <V> CurryingToIntFunction<V> compose(ToDoubleFunction<? super V> before) {
+        Objects.requireNonNull(before);
+        return (v) -> this.applyAsInt(before.applyAsDouble(v));
     }
 
     default <V, U> CurryingToIntBiFunction<V, U> compose(ToDoubleBiFunction<? super V, ? super U> before) {

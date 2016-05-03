@@ -29,4 +29,28 @@ public final class Functions {
     public static <T> String toString(T t) {
         return String.valueOf(t);
     }
+
+    public static int castToInt(double v) {
+        return (int) v;
+    }
+
+    public static int castToInt(long v) {
+        return (int) v;
+    }
+
+    public static long castToLong(double v) {
+        return (long) v;
+    }
+
+    public static long castToLong(int v) {
+        return v;
+    }
+
+    public static double castToDouble(long v) {
+        return v;
+    }
+
+    public static double castToDouble(int v) {
+        return v;
+    }
 }
