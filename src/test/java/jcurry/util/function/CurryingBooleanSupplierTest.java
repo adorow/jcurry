@@ -1,16 +1,14 @@
 package jcurry.util.function;
 
 import jcurry.util.Currying;
-import jcurry.util.function.testdata.BiFunctions;
-import jcurry.util.function.testdata.BiPredicates;
-import jcurry.util.function.testdata.BooleanSuppliers;
-import jcurry.util.function.testdata.Functions;
+import jcurry.util.function.testdata.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 import java.util.function.BooleanSupplier;
 import java.util.function.Function;
+import java.util.function.Supplier;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
@@ -61,4 +59,29 @@ public class CurryingBooleanSupplierTest {
 
         assertThat(negatedSupplier.getAsBoolean(), is(equalTo(result)));
     }
+
+    @Test
+    public void thenElse_objects() {
+        CurryingBooleanSupplier trueSupplier = Currying.booleanSupplier(BooleanSuppliers::returnsTrue);
+        CurryingBooleanSupplier falseSupplier = Currying.booleanSupplier(BooleanSuppliers::returnsFalse);
+
+        Integer a = 1;
+        Integer b = 2;
+        assertThat(trueSupplier.thenElse(a, b).get(), is(equalTo(a)));
+        assertThat(falseSupplier.thenElse(a, b).get(), is(equalTo(b)));
+    }
+
+    @Test
+    public void thenElse_suppliers() {
+        CurryingBooleanSupplier trueSupplier = Currying.booleanSupplier(BooleanSuppliers::returnsTrue);
+        CurryingBooleanSupplier falseSupplier = Currying.booleanSupplier(BooleanSuppliers::returnsFalse);
+
+        Integer a = 1;
+        Integer b = 2;
+        Supplier<Integer> sa = Suppliers.supply(a);
+        Supplier<Integer> sb = Suppliers.supply(b);
+        assertThat(trueSupplier.thenElse(sa, sb).get(), is(equalTo(a)));
+        assertThat(falseSupplier.thenElse(sa, sb).get(), is(equalTo(b)));
+    }
+
 }

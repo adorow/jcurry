@@ -7,4 +7,9 @@ public final class BooleanSuppliers {
     public static boolean returnsTrue() {
         return true;
     }
+
+
+    public static boolean returnsFalse() {
+        return false;
+    }
 }

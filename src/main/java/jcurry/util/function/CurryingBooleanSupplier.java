@@ -18,6 +18,7 @@ package jcurry.util.function;
 import java.util.function.BiFunction;
 import java.util.function.BooleanSupplier;
 import java.util.function.Function;
+import java.util.function.Supplier;
 
 public interface CurryingBooleanSupplier extends BooleanSupplier {
 
@@ -33,4 +34,11 @@ public interface CurryingBooleanSupplier extends BooleanSupplier {
         return () -> !this.getAsBoolean();
     }
 
+    default <R> CurryingSupplier<R> thenElse(Supplier<R> ifTrue, Supplier<R> ifFalse) {
+        return () -> this.getAsBoolean() ? ifTrue.get() : ifFalse.get();
+    }
+
+    default <R> CurryingSupplier<R> thenElse(R ifTrue, R ifFalse) {
+        return () -> this.getAsBoolean() ? ifTrue : ifFalse;
+    }
 }
