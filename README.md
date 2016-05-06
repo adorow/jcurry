@@ -1,7 +1,7 @@
 jcurry
 ---------
 
-###### Current version: 1.0.0
+###### Current version: 1.0.1
 
 ### about
 
@@ -24,14 +24,14 @@ Some of the added functionality are:
 <dependency>
     <groupId>com.github.adorow</groupId>
     <artifactId>jcurry</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 </dependency>
 ```
 
 #### Gradle
 ```groovy
 dependencies {
-    compile "com.github.adorow:jcurry:1.0.0"
+    compile "com.github.adorow:jcurry:1.0.1"
 }
 ```
 
