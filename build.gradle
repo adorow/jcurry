@@ -11,8 +11,8 @@ repositories {
 sourceCompatibility='1.8'
 targetCompatibility='1.8'
 
-ossrhUsername='placeholder'
-ossrhPassword='placeholder'
+def ossrhUsername='placeholder'
+def ossrhPassword='placeholder'
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
