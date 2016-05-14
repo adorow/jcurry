@@ -1,7 +1,7 @@
-jcurry
----------
+jcurry [![Build Status](https://travis-ci.org/adorow/jcurry.svg?branch=master)](https://travis-ci.org/adorow/jcurry)
+========
 
-[![Build Status](https://travis-ci.org/adorow/jcurry.svg?branch=master)](https://travis-ci.org/adorow/jcurry)
+
 
 ###### Current version: 1.0.1
 
