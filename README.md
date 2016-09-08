@@ -1,6 +1,8 @@
-jcurry [![Build Status](https://travis-ci.org/adorow/jcurry.svg?branch=master)](https://travis-ci.org/adorow/jcurry) [![Maven Central](https://img.shields.io/maven-central/v/com.github.adorow/jcurry.svg?label=version)](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22jcurry%22)
+jcurry 
 ========
 
+[![Build Status](https://travis-ci.org/adorow/jcurry.svg?branch=master)](https://travis-ci.org/adorow/jcurry) 
+[![Maven Central](https://img.shields.io/maven-central/v/com.github.adorow/jcurry.svg?label=version)](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22jcurry%22)
 
 ### about
 
