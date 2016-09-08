@@ -19,7 +19,7 @@ Some of the added functionality are:
 - flipping input parameters;
 - composition (where not already applied by Java8).
 
-### Using jcurry
+### using jcurry
 #### Maven
 ```xml
 <dependency>
